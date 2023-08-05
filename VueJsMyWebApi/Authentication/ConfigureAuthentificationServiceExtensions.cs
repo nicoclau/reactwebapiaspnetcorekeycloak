@@ -30,7 +30,7 @@ namespace MyWebApi.Authentication
 
                 var content = Newtonsoft.Json.Linq.JObject.Parse(userRole.Value);
 
-                if (content["vujs"] != null)
+                if (content["vuejs"] != null)
                 {
                     foreach (var role in content["vuejs"]["roles"])
                     {
