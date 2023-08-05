@@ -10,22 +10,15 @@ const HttpMethods = {
 
 const _axios = axios.create();
 
+const cb = (config: InternalAxiosRequestConfig) => {
+  config.headers.Authorization = `Bearer ${KeyCloakService.GetAccesToken()}`;
+  return config;
+};
+
 const configureAxiosKeycloak = (): void => {
   _axios.interceptors.request.use(
     (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
-      const { method, url } = config;
-
-      console.log(method);
-      console.log(url);
-
-      console.log(KeyCloakService.IsLoggedIn());
-
       if (KeyCloakService.IsLoggedIn()) {
-        const cb = (config: InternalAxiosRequestConfig) => {
-          config.headers.Authorization = `Bearer ${KeyCloakService.GetAccesToken()}`;
-          return config;
-        };
-
         KeyCloakService.UpdateToken(cb(config));
       }
 
