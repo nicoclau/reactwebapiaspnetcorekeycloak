@@ -1,0 +1,8 @@
+{
+  "realm": "vuejs",
+  "auth-server-url": "http://localhost:8082/",
+  "ssl-required": "external",
+  "resource": "vuejs",
+  "public-client": true,
+  "confidential-port": 0
+}
